@@ -1,0 +1,37 @@
+There are several ways to solve this:
+
+**1. Using `box-sizing: border-box;`:**
+This CSS property tells the browser to include the padding and border within the element's total width and height.  Applying this to the container will make the 50% width calculation include the padding and border. 
+```css
+.container { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  box-sizing: border-box; /*Solution*/
+  padding: 20px; /*Example Padding*/ 
+  border: 5px solid red; /* Example Border*/
+}
+.item { 
+  width: 50%; 
+  height: 100px; 
+  background-color: blue; 
+}
+```
+**2. Adjusting the width calculation:**
+Instead of using a percentage, you can calculate the width explicitly, subtracting the padding and border width. This approach requires knowing the exact padding and border values.
+**3. Using `width: calc(50% - 20px);` (Example):**
+If you have fixed padding/borders, you can use `calc()` to account for them directly.
+```css
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.item {
+  width: calc(50% - 40px); /* Subtract padding on both sides (20px * 2) */
+  height: 100px;
+  background-color: blue;
+}
+```
+Choose the method that best suits your needs and coding style.  The `box-sizing` property is generally the most straightforward and recommended approach for consistent behavior across different browsers.
